@@ -3,11 +3,11 @@
 -- Add any additional keymaps here
 --
 local function map(mode, lhs, rhs, opts)
-  local options = { noremap = true, silent = true }
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.keymap.set(mode, lhs, rhs, options)
+    local options = { noremap = true, silent = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.keymap.set(mode, lhs, rhs, options)
 end
 
 vim.g.mapleader = " "                -- 设置leader键为空格
@@ -36,14 +36,21 @@ map("v", "p", 'P') -- visual模式下覆盖粘贴不污染剪贴板
 
 map({ "n", "v" }, "<leader>y", [["+y]])
 
+-- ┌────────────────┐
+-- │ tmux-navigator │
+-- └────────────────┘
+map("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
+map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
+map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
+map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
 
 vim.keymap.set("n", "<leader>n", function()
-  local is_number = vim.wo.number
-  if is_number then
-    vim.wo.number = false
-    vim.wo.relativenumber = false
-  else
-    vim.wo.number = true
-    vim.wo.relativenumber = true
-  end
+    local is_number = vim.wo.number
+    if is_number then
+        vim.wo.number = false
+        vim.wo.relativenumber = false
+    else
+        vim.wo.number = true
+        vim.wo.relativenumber = true
+    end
 end, { desc = "Toggle line numbers" })
