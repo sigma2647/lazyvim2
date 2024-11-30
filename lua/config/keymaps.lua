@@ -32,6 +32,9 @@ map("n", "<leader>h", ":nohlsearch<CR>")
 map("n", "Q", ":q<CR>")
 map("n", "S", ":w<CR>")
 
+map("n", "<tab>", ":bnext<CR>")
+map("n", "<s-tab>", ":bprev<CR>")
+
 map("v", "p", 'P') -- visual模式下覆盖粘贴不污染剪贴板
 
 map({ "n", "v" }, "<leader>y", [["+y]])
